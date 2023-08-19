@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange" style="background-color: #b37a11;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a style="margin-top: 7px !important;" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="(service.basketsource$ |async) as basket" 
+            routerLinkActive="active" routerLink="#">{{getCount(basket.Items)}}</a>
+          </li>
+          <ng-container *ngIf="(accountSer.GetCurrentUserData$ |async)==null">
+            <li class="nav-item">
+              <a style="margin-top: 7px !important;" routerLinkActive="active"  routerLink="/Home/Login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a style="margin-top: 7px !important;" routerLinkActive="active"  routerLink="/Home/Register">Register</a>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="accountSer.GetCurrentUserData$|async as user">
+            <li class="nav-item">
+              <a style="margin-top: 7px !important;" routerLinkActive="active"  routerLink="/Home/Login">welcome+  {{user.displayName}}</a>
+            </li>
+            <li class="nav-item">
+              <a style="margin-top: 7px !important;" routerLinkActive="active"  routerLink="/Home/logout">log out</a>
+            </li>
+          </ng-container>
+          
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLinkActive="active" routerLink="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" routerLinkActive="active" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLinkActive="active" routerLink="#">Action</a></li>
+              <li><a class="dropdown-item" routerLinkActive="active" routerLink="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLinkActive="active" routerLink="#">Something else here</a></li>
+            </ul>
+          </li> -->
+         
+        </ul>
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-6">
+<form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input id="email" name="email" type="email" formControlName="email" 
+      class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
+        Please Enter E-mail
+      </div> 
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+      <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">
+        Please Enter password
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+</div>

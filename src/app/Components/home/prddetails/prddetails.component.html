@@ -1,0 +1,11 @@
+
+    <div class="card" style="margin-top: 20px;" *ngIf="product">
+        <img src="../../../../assets/Images/image.jpg" class="card-img-top" style="height: 200px;width: 200px;" alt="...">
+        <div class="card-body">
+          <h5 class="card-title " style="COLOR: darkgoldenrod;">{{product.name}}</h5>
+          <p class="card-text" style="COLOR: darkgoldenrod;">{{product.description}}</p>
+          <a (click)="addToBasket()" href="#" class="btn btn-outline-success" style="margin-right: 10px;">Add to Card</a>
+          <a routerLink="productitem/{{product.id}}" class="btn btn-outline-success">Show Details</a>
+
+        </div>
+      </div>

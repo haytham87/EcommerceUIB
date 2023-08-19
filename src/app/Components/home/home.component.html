@@ -1,0 +1,41 @@
+
+<div class="row">
+  <div class="col-2">
+
+    <h3 class="bg-warning">Product Types</h3>
+    <ul class="list-group">
+      <li class="list-group-item" style="padding-left: 25px;" [class.active]="t.id===typeIdSelected" [value]="t.id"
+        (click)="onTypeChanges(this.t.id)" *ngFor="let t of productType">{{t.typeName}}</li>
+
+    </ul>
+    <h3 class="bg-warning" style="margin-top: 10px;">Product Brands</h3>
+    <ul class="list-group">
+      <li class="list-group-item" style="padding-left: 25px;" 
+      *ngFor="let o of brands"
+      [class.active]="o.id===brandIdSelected" [value]="o.id"
+        (click)="onBrandChanges(this.o.id)"
+      >{{o.brandName}}</li>
+
+    </ul>
+
+
+    <!-- /#wrapper -->
+  </div>
+  <div class="col-10">
+    <div class="row">
+    
+      <div class="col-4" *ngFor="let p of products">
+        
+        <app-prddetails [product]="p"></app-prddetails>
+     
+    </div>
+    </div>
+    <pagination [boundaryLinks]="showBoundaryLinks" 
+         [directionLinks]="showDirectionLinks" 
+         [totalItems]="this.pageSize"
+         [itemsPerPage]="1"
+         (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+
+
+</div>
